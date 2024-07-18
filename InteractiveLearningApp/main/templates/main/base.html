@@ -1,18 +1,24 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %} {% endblock title %}</title>
-        
+    <title>{% block title %}{% endblock title %}</title>
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/header.css' %}">
+    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/sidebar.css' %}">
 </head>
 <body>
-
-    
+    {% include 'main/header.html' %}
+    {% include 'main/navbar.html' %}
+    {% include 'main/sidebar.html' %}
     {% block content %}
         
     {% endblock content %}
+
+    <script src="{% static 'js/main.js' %}"></script>
         
-    
 </body>
 </html>
