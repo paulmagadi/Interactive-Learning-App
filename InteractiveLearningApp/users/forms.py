@@ -41,16 +41,6 @@ class UpdateUserPassword(PasswordChangeForm):
 
 
 class UpdateInfoForm(forms.ModelForm):
-    phone = forms.CharField()
-    address1 = forms.CharField()
-    address2 = forms.CharField()
-    city = forms.CharField()
-    state = forms.CharField()
-    zipcode = forms.CharField()
-    country = forms.CharField()
-
     class Meta:
         model = Profile
-        fields = ["phone", "address1", "address2", "city", "state", "zipcode", "country"]
-
-
+        fields = ["phone", "city", "country", "linkedin", "github", "twitter" ]
