@@ -1,6 +1,6 @@
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
 from django import forms
-from .models import CustomUser, Profile, ShippingAddress
+from .models import CustomUser, Profile
 
 
 
@@ -54,18 +54,3 @@ class UpdateInfoForm(forms.ModelForm):
         fields = ["phone", "address1", "address2", "city", "state", "zipcode", "country"]
 
 
-class ShippingAddressForm(forms.ModelForm):
-    full_name = forms.CharField()
-    email = forms.EmailField()
-    phone = forms.CharField()
-    address1 = forms.CharField()
-    address2 = forms.CharField()
-    city = forms.CharField()
-    state = forms.CharField()
-    zipcode = forms.CharField()
-    country = forms.CharField()
-
-    class Meta:
-        model = ShippingAddress
-        fields = ["full_name", "email", "phone", "address1", "address2", "city", "state", "zipcode", "country"]
-        
