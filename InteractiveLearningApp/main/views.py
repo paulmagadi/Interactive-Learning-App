@@ -1,3 +1,11 @@
-from django.shortcuts import render
+from rest_framework import viewsets
+from .models import Lesson, UserProgress
+from .serializers import LessonSerializer, UserProgressSerializer
 
-# Create your views here.
+class LessonViewSet(viewsets.ModelViewSet):
+    queryset = Lesson.objects.all()
+    serializer_class = LessonSerializer
+
+class UserProgressViewSet(viewsets.ModelViewSet):
+    queryset = UserProgress.objects.all()
+    serializer_class = UserProgressSerializer
