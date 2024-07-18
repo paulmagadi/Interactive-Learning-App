@@ -1,4 +1,0 @@
-
-LessonSerializer
-
-UserProgressSerializer
