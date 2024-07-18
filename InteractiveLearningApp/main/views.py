@@ -1,6 +1,5 @@
 # views.py
 from django.shortcuts import render
-from .models import Lesson, UserProgress
 
 def home(request):
     return render(request, 'main/index.html')

@@ -1,0 +1,53 @@
+header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    max-height: 3rem;
+    z-index: 1000;
+}
+
+header div:last-of-type{
+    margin-left: auto;
+}
+
+header div:first-of-type{
+    margin-right: auto;
+}
+
+header div p {
+    padding: 1.3em;
+}
+
+header form input {
+    padding: .3em;
+    border: 1px solid white;
+    border-radius: 10px;
+}
+
+header a {
+    color: white;
+}
+
+header p:hover {
+    background-color: white;
+    color: black;
+}
+
+header img {
+    border-radius: 50%;
+}
+
+header .search {
+    padding: 0 .8em;
+}
+
+header img {
+    margin: 1em;
+}

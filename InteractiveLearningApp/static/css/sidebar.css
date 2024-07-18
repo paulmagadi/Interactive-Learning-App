@@ -1,0 +1,22 @@
+.sidebar {
+    width: 20%;
+    background-color: rgb(229, 229, 231);
+    overflow-y: scroll;
+    position: fixed;
+    top: 5rem;
+    left: 0;
+    height: 100%;
+    cursor: pointer;
+    padding-bottom: 5em;
+}
+
+.sidebar p, .sidebar h1 {
+    padding: 1em;
+}
+
+.sidebar p:hover {
+    background-color: green;
+}
+
+
+
