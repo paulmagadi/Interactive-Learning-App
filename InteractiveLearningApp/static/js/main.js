@@ -1,43 +1,35 @@
-// const navbar = document.querySelector('nav');
-// const leftButton = document.querySelector('.left');
-// const rightButton = document.querySelector('.right');
+const searchBar = document.querySelector('.search-mobile-container');
 
-// const scrollStep = 100; 
+const searchButton = document.querySelector('.search-button-mobile');
 
-// function handleScrollRight() {
-//   navbar.scrollBy({
-//     left: scrollStep,
-//     behavior: 'smooth'
-//   });
-//   updateButtonVisibility();
-// }
+const closeSearch = document.querySelector('.close-search');
 
-// function handleScrollLeft() {
-//   navbar.scrollBy({
-//     left: -scrollStep,
-//     behavior: 'smooth'
-//   });
-//   updateButtonVisibility();
-// }
+const navMenu = document.querySelector('.navlinks');
 
-// function updateButtonVisibility() {
-//   leftButton.style.visibility = navbar.scrollLeft === 0 ? 'hidden' : 'visible';
-//   rightButton.style.visibility =
-//     navbar.scrollLeft + navbar.clientWidth >= navbar.scrollWidth ? 'hidden' : 'visible';
-// }
+const menuButton = document.querySelector('.nav-menu');
 
-// leftButton.addEventListener('click', handleScrollLeft);
-// rightButton.addEventListener('click', handleScrollRight);
+const closeMenu = document.querySelector('.close-menu');
 
-// navbar.addEventListener('scroll', updateButtonVisibility);
 
-// window.addEventListener('resize', () => {
-//   updateButtonVisibility();
-// });
+searchButton.addEventListener('click', function(){
+    searchBar.style.display = 'flex';
+})
+
+closeSearch.addEventListener('click', function(){
+    searchBar.style.display = 'none';
+})
+
+menuButton.addEventListener('click', function(){
+    navMenu.style.display = 'block';
+})
+
+closeMenu.addEventListener('click', function(){
+    navMenu.style.display = 'none';
+})
 
 
 
-const navbar = document.querySelector('nav');
+const navbar = document.querySelector('.scroll-header');
 const leftButton = document.querySelector('.left');
 const rightButton = document.querySelector('.right');
 
@@ -60,9 +52,9 @@ function handleScrollLeft() {
 }
 
 function updateButtonVisibility() {
-  leftButton.style.display = navbar.scrollLeft === 0 ? 'none' : 'block';
-  rightButton.style.display =
-    navbar.scrollLeft + navbar.clientWidth >= navbar.scrollWidth ? 'none' : 'block';
+  leftButton.style.visibility = navbar.scrollLeft === 0 ? 'hidden' : 'visible';
+  rightButton.style.visibility =
+    navbar.scrollLeft + navbar.clientWidth >= navbar.scrollWidth ? 'hidden' : 'visible';
 }
 
 leftButton.addEventListener('click', handleScrollLeft);
