@@ -7,9 +7,10 @@
 {% endblock title %}
     
 
-{% include 'courses/sidebar.html' %}
+
 {% block content %}
-<div class="content">
+{% include 'courses/sidebar.html' %}
+<div class="course-content">
     {{course}}
 </div>
 {% endblock content %}
