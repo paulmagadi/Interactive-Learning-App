@@ -289,17 +289,22 @@ a {
 
 .sidebar-container {
     width: 20%;
-    overflow-y: scroll;
+    
     position: fixed;
     top: 5rem;
     left: 0;
+    bottom: 0;
     height: 100%;
     cursor: pointer;
 }
 
 .sidebar {
+    overflow-y: auto;
+    width: 100%;
+    height: 100%;
     background-color: rgb(229, 229, 231);
-    padding: 2em 0;
+    padding-top: 2em;
+    padding-bottom: 8em;
     font-family: 'Buenard', Arial, sans-serif;
 }
 
@@ -307,7 +312,7 @@ a {
     padding: .7em 2em;
 }
 
-.sidebar p, .sidebar h3 {
+.sidebar p {
     padding: .7em 2em;
 }
 
@@ -328,6 +333,7 @@ a {
 
     .sidebar {
         width: 70%;
+        padding-top: 6em;
     }
 
     .sidebar-container.show {
@@ -340,14 +346,14 @@ main {
     display: flex;
     justify-content: flex-start;
     
-    background-color: rgb(131, 214, 214);
     min-height: 100vh;
 }
 
 .content {
     width: 80%;
-    padding: 10em 1em;
+    padding: 10em 2em;
     margin-left: 20%;
+    background-color: rgb(131, 214, 214);
 }
 
 @media (max-width: 1000px) {
