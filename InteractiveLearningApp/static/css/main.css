@@ -217,10 +217,18 @@ main {
     background-color: #0fab72;
     color:  var(--white-color);
     cursor: pointer;
-    overflow-x: hidden;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    white-space: nowrap;
+    -ms-overflow-style: none;  
+    scrollbar-width: none;  
     display: flex;
     justify-content: left;
     position: relative;
+}
+
+.scroll-header::-webkit-scrollbar { 
+    display: none;  
 }
 
 .scroll-header a {
@@ -237,7 +245,7 @@ main {
     left: 0;
     visibility: hidden;
     position: fixed;
-    background-color: #ffffff;
+    background-color: #0fab72;
     padding: .45em 1em;
 }
 
@@ -252,13 +260,11 @@ main {
 
 @media (max-width: 1000px) {
     .scroll-header .left{
-        /* display: none; */
-        padding: .45em .5em;
+        display: none;
     }
     
     .scroll-header .right {
-        /* display: none; */
-        padding: .45em .5em;
+        display: none;
     
     }
 }
