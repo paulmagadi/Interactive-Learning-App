@@ -91,7 +91,8 @@ a {
 
 .navbar .search-button-mobile {
     display: none;
-    padding: 3px 3px;
+    padding: 6px 5px 0 5px;
+    text-align: center;
     border-radius: 50%;
     background-color: var(--white-color);
 }
@@ -203,6 +204,11 @@ main {
 
     .close-menu {
         display: block;
+        color: var(--white-color);
+    }
+
+    .close-menu svg {
+        color: var(--white-color);
     }
 }
 
