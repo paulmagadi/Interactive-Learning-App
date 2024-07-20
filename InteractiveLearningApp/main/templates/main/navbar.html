@@ -50,6 +50,11 @@
     <div class="scroll-header">
         <a class="left">&langle;</a>
         <a class="sidebar-toggle-button">&#8801;</a>
+        
+        {% for course in courses %}
+        <a href="#">{{ course }}</a>
+        {% endfor %}
+            
         <a href="#">HTML</a>
         <a href="#">CSS</a>
         <a href="#">HTML</a>
