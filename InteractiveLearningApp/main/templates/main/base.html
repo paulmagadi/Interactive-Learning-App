@@ -18,10 +18,15 @@
 <body>
     {% include 'main/header.html' %}
     {% include 'main/navbar.html' %}
-    {% include 'main/sidebar.html' %}
-    {% block content %}
-        
-    {% endblock content %}
+    
+    
+        <main>
+            {% include 'main/sidebar.html' %}
+            {% block content %}
+            
+            {% endblock content %}
+        </main>
+    
 
     <script src="{% static 'js/main.js' %}"></script>
         

@@ -152,6 +152,9 @@ a {
 
 
 @media (max-width: 1000px) {
+    .navbar {
+        padding: .5em 1em;
+    }
     .navbar .search-container {
         display: none;
     }
@@ -284,8 +287,12 @@ a {
     }
 }
 
-.sidebar {
+.sidebar-container {
     width: 20%;
+}
+
+.sidebar {
+    
     background-color: rgb(229, 229, 231);
     overflow-y: scroll;
     position: fixed;
@@ -311,9 +318,20 @@ a {
 
 
 @media (max-width: 1000px) {
+    .sidebar-container {
+     display: none;
+     width: 100%;
+     height: 100%;
+     top: 0;
+     left: 0;
+     position: relative;
+     background-color: rgba(0, 0, 0, 0.2);
+    }
+
     .sidebar {
+        position: absolute;
         width: 70%;
-        display: none;
+        z-index: 103;
     }
 
     .sidebar.show {
@@ -321,3 +339,25 @@ a {
     }
 }
 
+main {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    
+    background-color: rgb(131, 214, 214);
+    min-height: 100vh;
+}
+
+.content {
+    width: 80%;
+    padding: 10em 1em;
+    margin-left: 20%;
+}
+
+@media (max-width: 1000px) {
+    .content {
+        width: 100%;
+        margin-left: 0;
+    }
+    
+}

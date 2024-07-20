@@ -67,7 +67,7 @@ window.addEventListener('resize', () => {
 });
 
 
-const sidebar = document.querySelector('.sidebar');
+const sidebar = document.querySelector('.sidebar-container');
 const sidebarButton = document.querySelector('.sidebar-toggle-button');
 
 sidebarButton.addEventListener('click', () => {
@@ -80,3 +80,12 @@ sidebarButton.addEventListener('click', () => {
     sidebarButton.innerHTML = '&#8801;'; // Change back to menu symbol
   }
 });
+
+
+// close the sidebar when a user clicks outside the sidebar
+
+window.onclick = (event) => {
+  if (event.target == sidebar) {
+    sidebar.style.display = "none";
+  }
+}

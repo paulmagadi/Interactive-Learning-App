@@ -35,7 +35,13 @@
                   </form>
             </div>
             <div class="profile">
-                <a href="#">Annabell</a>
+                
+                {% if user.is_authenticated %}
+                    <a href="{% url 'signout' %}">Logout</a>
+                {% else %}
+                <a href="{% url 'signin' %}">Login</a>
+                {% endif %}
+                    
             </div>
         </div>
     </nav>
