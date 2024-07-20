@@ -65,3 +65,18 @@ navbar.addEventListener('scroll', updateButtonVisibility);
 window.addEventListener('resize', () => {
   updateButtonVisibility();
 });
+
+
+const sidebar = document.querySelector('.sidebar');
+const sidebarButton = document.querySelector('.sidebar-toggle-button');
+
+sidebarButton.addEventListener('click', () => {
+  sidebar.classList.toggle('show');
+  navbar.classList.add('border');
+
+  if (sidebar.classList.contains('show')) {
+    sidebarButton.innerHTML = '&times;'; // Change to times symbol
+  } else {
+    sidebarButton.innerHTML = '&#8801;'; // Change back to menu symbol
+  }
+});
