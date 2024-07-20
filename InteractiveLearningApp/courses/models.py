@@ -17,7 +17,7 @@ class Course(models.Model):
         self.full_clean()
     
         if not self.slug:
-            base_slug = slugify(self.name)
+            base_slug = slugify(self.title)
             slug = base_slug
             counter = 1
             while Course.objects.filter(slug=slug).exists():
@@ -41,7 +41,7 @@ class Unit(models.Model):
         self.full_clean()
     
         if not self.slug:
-            base_slug = slugify(self.name)
+            base_slug = slugify(self.title)
             slug = base_slug
             counter = 1
             while Unit.objects.filter(slug=slug).exists():
@@ -68,7 +68,7 @@ class Lesson(models.Model):
         self.full_clean()
     
         if not self.slug:
-            base_slug = slugify(self.name)
+            base_slug = slugify(self.title)
             slug = base_slug
             counter = 1
             while Lesson.objects.filter(slug=slug).exists():

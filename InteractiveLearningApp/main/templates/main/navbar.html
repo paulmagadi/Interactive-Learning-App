@@ -52,7 +52,7 @@
         <a class="sidebar-toggle-button">&#8801;</a>
         
         {% for course in courses %}
-        <a href="#">{{ course|upper }}</a>
+        <a href="{% url 'course' course.slug %}">{{ course|upper }}</a>
         {% endfor %}
             
         <a href="#">HARD CODE</a>
