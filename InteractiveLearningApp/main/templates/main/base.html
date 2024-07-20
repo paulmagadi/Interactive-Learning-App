@@ -14,19 +14,23 @@
     <link rel="stylesheet" href="{% static 'css/login.css' %}">
     <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
     <link rel="stylesheet" href="{% static 'css/sidebar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
 </head>
 <body>
     {% include 'main/header.html' %}
     {% include 'main/navbar.html' %}
     
     
+        
+        {% include 'main/sidebar.html' %}
         <main>
-            {% include 'main/sidebar.html' %}
             {% block content %}
             
             {% endblock content %}
+            {% include 'main/footer.html' %}
         </main>
-    
+            
+            
 
     <script src="{% static 'js/main.js' %}"></script>
         
