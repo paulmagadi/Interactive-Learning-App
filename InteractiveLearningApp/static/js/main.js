@@ -79,6 +79,8 @@ sidebarButton.addEventListener('click', () => {
   } else {
     sidebarButton.innerHTML = '&#8801;'; // Change back to menu symbol
   }
+
+  
 });
 
 
@@ -86,6 +88,7 @@ sidebarButton.addEventListener('click', () => {
 
 window.onclick = (event) => {
   if (event.target == sidebar) {
-    sidebar.style.display = "none";
+    sidebar.classList.toggle('show');
+    sidebarButton.innerHTML = '&#8801;'; // Change back to menu symbol
   }
 }
