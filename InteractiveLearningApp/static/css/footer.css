@@ -2,7 +2,7 @@
   /* Footer */
   .footer {
     background-color: rgb(0, 0, 0);
-    color: orange;
+    color: var(--primary-color);
   }
   
   .footer-column-container {
@@ -31,7 +31,7 @@
   }
   
   .footer-column li a span {
-    color: orange;
+    color: var(--primary-color);
     font-size: .7rem;
   }
   
@@ -61,65 +61,5 @@
     }
   }
   
-  /* Fixed footer-menu for mobile devices */
-  .foot {
-    background-color: white;
-    font-size: .8rem;
-    color: black;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    display: none;
-    /* padding: 0 1.5em; */
-  }
   
-  .foot .foot-menu {
-    display: block;
-  }
-  
-  .foot a {
-    color: black;
-  }
-  
-  .foot ul {
-    list-style: none;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .foot li {
-    padding: .5em 1em;
-    text-align: center;
-  }
-  
-  .foot li:hover {
-    background-color: orange;
-    cursor: pointer;
-  }
-  
-  .foot .foot-cart {
-    position: relative;
-  }
-  
-  .foot .cart-count {
-    background-color: red;
-    color: white;
-    border-radius: 50%;
-    padding: 1px 4px;
-    position: absolute;
-    margin: 0;
-    top: 5px;
-    right: 10px;
-  }
-
-  
-  
-  @media (max-width: 600px) {
-    .foot {
-      display: block;
-    }
-  }
   
