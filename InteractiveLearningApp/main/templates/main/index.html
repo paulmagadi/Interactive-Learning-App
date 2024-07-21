@@ -9,9 +9,103 @@
 {% block content %}
     <main>
         <div class="home-content">
-            <h1>Welcome to eLERN</h1>
+            <section>
+                <div class="hero-section">
+                    <div class="hero-statement">
+                        <h1>Easy Learning</h1>
+                    </div>
+                    <div class="hero-image">
+                        <img src="/static/images/hero.png" alt="eLearn">
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <div class="home-lessons-section">
+                    <h1>Our Tutorials</h1>
+                    <div class="home-lessons">
+                        {% for course in courses %}
+                        <div class="home-lesson-card">
+                            <h1>{{course|upper}}</h1>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </section>
         </div>
     </main>
+
+
+    <style>
+        .home-lessons-section {
+            background-color: antiquewhite;
+            padding: 2em;
+        }
+
+        .home-lessons-section .home-lessons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            width: 100%;
+            gap: .5em;
+            padding: 1em 0;
+        }
+
+        .home-lessons-section .home-lesson-card {
+            width: 19%;
+            padding: 2em;
+            background-color: var(--primary-color);
+            color: var(--white-color);
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+
+
+
+
+
+
+        .hero-section {
+            display: flex;
+            justify-content: space-between;
+            gap: 2em;
+            background-color: var(--secondary-color);
+            color: var(--white-color);
+            padding: 8em 0 0 0;
+        }
+
+        .hero-section .hero-statement {
+            width: 48%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-section .hero-image {
+            width: 48%;
+            display: flex;
+            justify-content: center;
+            align-items: baseline;
+        }
+
+        .hero-section .hero-image img {
+            width: 80%;
+        }
+
+        @media (max-width: 580px) {
+            .hero-section {
+            flex-direction: column;
+        }
+        .hero-section .hero-statement {
+            width: 100%;
+        }
+
+        .hero-section .hero-image {
+            width: 100%;
+        }
+        }
+    </style>
     
 {% endblock content %}
     

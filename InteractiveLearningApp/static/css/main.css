@@ -6,6 +6,7 @@
 
 :root {
     --primary-color: rgb(255, 77, 0);
+    --secondary-color: rgb(11, 26, 91);
     --white-color: #ffffff;
     --nav-padding: .5em 2em;
 }
@@ -213,7 +214,9 @@ a {
 
 .scroll-header {
     width: 100%;
-    background-color: #0fab72;
+    /* background-color: #0fab72; */
+    background-color: var(--secondary-color);
+    border-bottom: 1px solid var(--white-color);
     color:  var(--white-color);
     cursor: pointer;
     overflow-x: auto;
@@ -237,21 +240,22 @@ a {
 }
 
 .scroll-header a:hover {
-    background-color: #00000067;;
+    background-color: #ffffff;
+    color: var(--secondary-color);
 }
 
 .scroll-header .left{
     left: 0;
     visibility: hidden;
     position: fixed;
-    background-color: #0fab72;
+    background-color: var(--secondary-color);
     padding: .45em 1em;
 }
 
 .scroll-header .right {
     right: 0;
     position: fixed;
-    background-color: #0fab72;
+    background-color: var(--secondary-color);
     padding: .45em 1em;
 
 }
@@ -259,7 +263,7 @@ a {
 .scroll-header .sidebar-toggle-button {
     display: none;
     position: fixed;
-    background-color: #0fab72;
+    background-color: var(--secondary-color);
     padding: .45em 1em;
     left: 0;
     z-index: 102;
@@ -344,16 +348,12 @@ a {
 .home-content {
     width: 100%;
     min-height: 100vh;
-    padding: 8em 2em;
+    
 }
-
-
 
 @media (max-width: 1000px) {
     .home-content {
         width: 100%;
-        margin-left: 0;
-        padding: 8em 1em;
     }
     
 }
