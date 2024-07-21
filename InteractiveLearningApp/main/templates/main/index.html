@@ -26,7 +26,7 @@
                     <div class="home-lessons">
                         {% for course in courses %}
                         <div class="home-lesson-card">
-                            <h1>{{course|upper}}</h1>
+                            <h1><a href="{% url 'course' course.slug %}">{{course|upper}}</a></h1>
                         </div>
                         {% endfor %}
                     </div>
@@ -58,6 +58,12 @@
             color: var(--white-color);
             border-radius: 10px;
             cursor: pointer;
+            text-align: center;
+        }
+
+        .home-lessons-section .home-lesson-card a {
+            color: var(--white-color);
+
         }
 
 
@@ -90,7 +96,7 @@
         }
 
         .hero-section .hero-image img {
-            width: 80%;
+            width: 70%;
         }
 
         @media (max-width: 580px) {

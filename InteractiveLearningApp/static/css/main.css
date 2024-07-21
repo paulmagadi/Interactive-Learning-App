@@ -7,6 +7,8 @@
 :root {
     --primary-color: rgb(255, 77, 0);
     --secondary-color: rgb(11, 26, 91);
+    --secondary-color: rgb(63, 210, 202);
+    --secondary-color: rgb(5, 133, 127);
     --white-color: #ffffff;
     --nav-padding: .5em 2em;
 }
@@ -27,7 +29,7 @@ body {
 }
 
 .navbar {
-    background-color: rgb(255, 77, 0);
+    background-color: var(--primary-color);
     color: var(--white-color);
     display: flex;
     justify-content: space-between;
