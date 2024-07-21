@@ -1,34 +1,42 @@
-{% extends 'main/base.html' %}
+
 {% load static %}
 
-{% block title %}
-    Register
-{% endblock title %}
-    
-
-
-{% block content %}
-<!-- Register form -->
-<div class="form-container">
-    <div class="auth-form">
-        <form action="{% url 'register' %}" method="post" class="register-form">
-            {% csrf_token %}
-            <div class="img">
-                <span id="close-signup-form" class="close"><a href="{% url 'home' %}">&times;</a></span>
-                <img src="{% static 'images/avatar.png' %}" alt="avatar" class="avatar" width="20%"> 
-            </div>
-            
-            <div class="login-container">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eLearn</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'images/favicon.png' %}">
+    <link href='https://fonts.googleapis.com/css?family=Laila' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Buenard' rel='stylesheet'>
+</head>
+<body>
+    <div class="form-container">
+        <div class="auth-form">
+            <form action="{% url 'register' %}" method="post" class="register-form">
                 {% csrf_token %}
-                {{ form.as_p }}
-                <button type="submit">Register</button>
-            </div>
-            <div class="login-container">
-                <button type="button" class="cancelbtn" id="cancel-signup-button"><a href="{% url 'home' %}">Cancel</a></button>
-                <span class="password">Already have accout? <a href="{% url 'signin' %}">Login.</a></span>
-            </div>
-        </form>
+                <div class="img">
+                    <span id="close-signup-form" class="close"><a href="{% url 'home' %}">&times;</a></span>
+                    <img src="{% static 'images/avatar.png' %}" alt="avatar" class="avatar" width="20%"> 
+                </div>
+                
+                <div class="login-container">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit">Register</button>
+                </div>
+                <div class="login-container">
+                    <button type="button" class="cancelbtn" id="cancel-signup-button"><a href="{% url 'home' %}">Cancel</a></button>
+                    <span class="password">Already have accout? <a href="{% url 'signin' %}">Login.</a></span>
+                </div>
+            </form>
+        </div>
     </div>
-</div>
-{% endblock content %}
+
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>
+
     

@@ -24,6 +24,12 @@ class CustomUserRegistrationForm(UserCreationForm):
     class Meta:
         model = CustomUser
         fields = ('first_name', 'last_name', 'email', 'password1', 'password2')
+        
+    def __init__(self, *args, **kwargs):
+        super(CustomUserRegistrationForm, self).__init__(*args, **kwargs)
+        for field_name in self.fields:
+            self.fields[field_name].help_text = ''
+        
 
 
 class UpdateUserForm(UserChangeForm):

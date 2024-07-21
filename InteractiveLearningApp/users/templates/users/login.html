@@ -1,39 +1,47 @@
-{% extends 'main/base.html' %}
 {% load static %}
 
-{% block title %}
-    Login
-{% endblock title %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eLearn</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'images/favicon.png' %}">
+    <link href='https://fonts.googleapis.com/css?family=Laila' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Buenard' rel='stylesheet'>
     
-
-{% block content %}
-    <!-- login form -->
-
-<div class="form-container">
-    <div class="auth-form">
-        <form action="{% url 'signin' %}" method="post" class="login-form">
-            {% csrf_token %}
-            <div class="img">
-                <span id="close" class="close"><a href="{% url 'home' %}">&times;</a></span>
-                <img src="{% static 'images/avatar.png' %}" alt="avatar" class="avatar" width="20%"> 
-            </div>
-            <div class="login-container">
+</head>
+<body>
+    <div class="form-container">
+        <div class="auth-form">
+            <form action="{% url 'signin' %}" method="post" class="login-form">
                 {% csrf_token %}
-                {{ form.as_p }}
-                <button type="submit">Login</button>
-                <label>  
-                    <input type="checkbox" checked="checked" name="remember">Remember me
-                </label>
-            </div>
-            <div class="login-container">
+                <div class="img">
+                    <span id="close" class="close"><a href="{% url 'home' %}">&times;</a></span>
+                    <img src="{% static 'images/avatar.png' %}" alt="avatar" class="avatar" width="20%"> 
+                </div>
+                <div class="login-container">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit">Login</button>
+                    <label>  
+                        <input type="checkbox" checked="checked" name="remember">Remember me
+                    </label>
+                </div>
+                <div class="login-container">
+                    
+                    <span class="">Have no account <a href="{% url 'register' %}">Register?</a></span> 
+                    <span class="password">Forgot <a href="#">password?</a></span>
+                </div>
                 
-                <span class="">Have no account <a href="{% url 'register' %}">Register?</a></span> 
-                <span class="password">Forgot <a href="#">password?</a></span>
-            </div>
-            
-        </form>
+            </form>
+        </div>
     </div>
-</div>
-{% endblock content %}
+
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>
+
     
 
