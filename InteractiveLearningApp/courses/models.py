@@ -98,7 +98,7 @@ class Content(models.Model):
     content_type = models.CharField(max_length=10, choices=CONTENT_TYPE_CHOICES)
     text_content = models.TextField(blank=True, null=True)
     video_url = models.URLField(blank=True, null=True)
-    quiz_data = models.JSONField(blank=True, null=True)  # Store quiz data in JSON format
+    quiz_data = models.JSONField(blank=True, null=True)  
     order = models.PositiveIntegerField()
 
     def __str__(self):
