@@ -59,7 +59,6 @@ class Unit(models.Model):
 class Lesson(models.Model):
     unit = models.ForeignKey(Unit, on_delete=models.CASCADE, related_name='lessons')
     title = models.CharField(max_length=200)
-    content = models.TextField()
     order = models.PositiveIntegerField()
     slug = models.SlugField(unique=True, blank=True, null=True)
     

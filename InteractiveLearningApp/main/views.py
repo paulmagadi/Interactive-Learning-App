@@ -1,10 +1,16 @@
 from django.shortcuts import render
-from django.shortcuts import render, get_object_or_404
 from courses.models import Course, Unit, Lesson, Content
 
 def home(request):
     courses = Course.objects.all()
+    units = Unit.objects.all()
+    lessons = Lesson.objects.all()
+    contents = Content.objects.all()
     context = {
-        'courses': courses
+        'courses': courses,
+        'units': units,
+        'lessons': lessons,
+        'contents': contents,
     }
     return render(request, 'main/index.html', context)
+
