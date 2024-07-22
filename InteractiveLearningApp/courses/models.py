@@ -89,16 +89,15 @@ class Lesson(models.Model):
 
 class Content(models.Model):
     CONTENT_TYPE_CHOICES = [
-        ('text', 'Text'),
-        ('video', 'Video'),
-        ('quiz', 'Quiz'),
+        ('header', 'Header'),
+        ('paragraph', 'Paragraph'),
+        ('list', 'List'),
     ]
 
     lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE, related_name='contents')
     content_type = models.CharField(max_length=10, choices=CONTENT_TYPE_CHOICES)
     text_content = models.TextField(blank=True, null=True)
-    video_url = models.URLField(blank=True, null=True)
-    quiz_data = models.JSONField(blank=True, null=True)  
+    list_items = models.TextField(blank=True, null=True)  # Store list items as a comma-separated string
     order = models.PositiveIntegerField()
 
     def __str__(self):
@@ -106,4 +105,26 @@ class Content(models.Model):
 
     class Meta:
         ordering = ['order']
+
+        
+
+# class Content(models.Model):
+#     CONTENT_TYPE_CHOICES = [
+#         ('text', 'Text'),
+#         ('video', 'Video'),
+#         ('quiz', 'Quiz'),
+#     ]
+
+#     lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE, related_name='contents')
+#     content_type = models.CharField(max_length=10, choices=CONTENT_TYPE_CHOICES)
+#     text_content = models.TextField(blank=True, null=True)
+#     video_url = models.URLField(blank=True, null=True)
+#     quiz_data = models.JSONField(blank=True, null=True)  
+#     order = models.PositiveIntegerField()
+
+#     def __str__(self):
+#         return f"{self.lesson.title} - {self.get_content_type_display()}"
+
+#     class Meta:
+#         ordering = ['order']
 

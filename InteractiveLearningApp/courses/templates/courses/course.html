@@ -13,6 +13,24 @@
 <div class="course-content">
     
     
+    
+    {% if course %}
+    <h1>{{ course.lesson.title }}</h1>
+    
+    <div>
+        {% for content in contents %}
+            {% if content.content_type == 'header' %}
+                <h2>{{ content.text_content }}</h2>
+            {% elif content.content_type == 'paragraph' %}
+                <p>{{ content.text_content }}</p>
+
+            {% endif %}
+        {% endfor %}
+    </div>
+    {% endif %}
+        
+        
+
         
 </div>
 {% endblock content %}

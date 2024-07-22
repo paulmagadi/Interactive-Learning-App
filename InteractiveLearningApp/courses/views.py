@@ -5,12 +5,14 @@ def course(request, slug):
     courses = Course.objects.all()
     units = Unit.objects.all()
     lessons = Lesson.objects.all()
+    contents = Content.objects.all()
     course = get_object_or_404(Course, slug=slug)
     context = {
         'course': course,
         'courses': courses,
         'units': units,
         'lessons': lessons,
+        'contents': contents,
     }
     return render(request, 'courses/course.html', context)
 
