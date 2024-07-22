@@ -1,24 +1,11 @@
 <aside>
     <div class="sidebar-container">
         <div class="sidebar">
-            <h3>LEARN {{course|upper}}</h3>
-            <p>HARD CODED</p>
-            <p>Introduction</p>
-            <p>Basics</p>
-            <p>Elements</p>
-            <p>Attributes</p>
-            <p>Introduction</p>
-            <p>Basics</p>
-            <p>Elements</p>
-            <p>Attributes</p>
-            <p>Introduction</p>
-            <p>Basics</p>
-            <p>Elements</p>
-            <p>Attributes</p>
-            <p>Introduction</p>
-            <p>Basics</p>
-            <p>Elements</p>
-            <p>Attributes</p>
+            <h3>LEARN {{ course.title|upper }}</h3>
+            
+            {% for unit in units %}
+                <p><a href="{% url 'course' course.slug %}?unit={{ unit.slug }}">{{ unit.title }}</a></p>
+            {% endfor %}
         </div>
     </div>
 </aside>

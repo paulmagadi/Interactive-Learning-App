@@ -12,26 +12,68 @@
 {% include 'courses/sidebar.html' %}
 <div class="course-content">
     
-    {{course.title}}
     
-    {% if course %}
-    <h1>{{ course.lesson.title }}</h1>
-    
-    <div>
-        {% for content in contents %}
-            {% if content.content_type == 'header' %}
-                <h2>{{ content.text_content }}</h2>
-            {% elif content.content_type == 'paragraph' %}
-                <p>{{ content.text_content }}</p>
-
-            {% endif %}
-        {% endfor %}
-    </div>
-    {% endif %}
+    {% comment %}
+        {% if course %}
         
+        
+        <div>
+            {% for content in contents %}
+                {% if content.content_type == 'header' %}
+                    <h2>{{ content.text_content }}</h2>
+                {% elif content.content_type == 'paragraph' %}
+                    <p>{{ content.text_content }}</p>
+    
+                {% endif %}
+            {% endfor %}
+        </div>
+        {% endif %}
+    {% endcomment %}
+        
+
+    <h1>{{ course.lesson.title }}</h1>
+    {% for lesson in lessons %}
+        <div class="content-container" style="background-color: {% cycle '#FFF4A3' '#FFC0C7' '#D9EEE1' %};">
+            <h2>{{ lesson.title }}</h2>
+                {% for content in contents %}
+                    {% if content.content_type == 'header' %}
+                        <h4>{{ content.text_content }}</h4>
+                    {% elif content.content_type == 'paragraph' %}
+                        <p>{{ content.text_content }}</p>
+                    {%endif%}
+                {% endfor %}
+        </div>
+    {% endfor %}
+        
+   
         
 
         
 </div>
+
+<style>
+    .content-container {
+        background-color: #FFF4A3;
+        margin-bottom: 20px;
+        padding: 20px;
+        border-radius: 5px;
+    }
+
+    pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+</style>
 {% endblock content %}
+
+
+
+
+
+
+
+
+
     
