@@ -19,16 +19,19 @@
                 {% for content in lesson_contents|dict_key:lesson.id %}
                     {% if content.content_type == 'header' %}
                         <h4>{{ content.text_content }}</h4>
+                        <br>
                     {% elif content.content_type == 'paragraph' %}
                         <p>{{ content.text_content }}</p>
+                        <br>
                     {% elif content.content_type == 'list' %}
                         <ul>
                             {% for item in content.split_list_items %}
                                 <li>{{ item }}</li>
                             {% endfor %}
                         </ul>
+                        <br>
                     {% elif content.content_type == 'code' %}
-                        <pre>{{ content.code_content }}</pre>
+                    <textarea class="code-editor">{{ content.code_content }}</textarea>
                     {% endif %}
                 {% endfor %}
             </div>
@@ -55,6 +58,7 @@
             </div>
             
             <div class="content-container" style="background-color: #D9EEE1;">
+                <h3>NOTE:</h3>
                 <p>We recommend reading this tutorial, in the sequence listed in the menu.</p>
 
                 <p>If you have a large screen, the menu will always be present on the left.</p>
@@ -80,22 +84,31 @@
 </div>
 
 <style>
+    .course-content {
+        width: 80%;
+        min-height: 100vh;
+        margin-left: 20%;
+        padding: 8em 2em;
+    }
+
+
+    @media (max-width: 1000px) {
+        .course-content  {
+            width: 100%;
+            margin-left: 0;
+            padding: 8em 1em;
+        }
+        
+    }
     .content-container {
         background-color: #FFF4A3;
-        margin-bottom: 20px;
-        padding: 20px;
+        margin-bottom: 1em;
+        padding: 1em;
         border-radius: 5px;
     }
 
     .content-container p {
         padding: .5em 0;
-    }
-
-    pre {
-        background-color: #f4f4f4;
-        padding: 10px;
-        border-radius: 5px;
-        overflow-x: auto;
     }
 
     .unit-content-container{
@@ -131,6 +144,15 @@
         color: white;
     }
 
+    @media (max-width:1000px) {
+        .content-container {
+        background-color: #FFF4A3;
+        margin-bottom: 1em;
+        padding: 1em;
+        border-radius: 5px;
+    }
+    }
+
     @media (max-width: 600px) {
         .unit-content-container{
         flex-direction: column;
@@ -142,4 +164,24 @@
     }
     }
 </style>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/javascript/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/python/python.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/css/css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/htmlmixed/htmlmixed.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var codeEditors = document.querySelectorAll('.code-editor');
+        codeEditors.forEach(function(editorElement) {
+            CodeMirror.fromTextArea(editorElement, {
+                lineNumbers: true,
+                mode: 'javascript',
+                theme: 'default'
+            });
+        });
+    });
+</script>
 {% endblock content %}

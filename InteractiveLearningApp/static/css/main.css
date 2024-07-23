@@ -359,20 +359,3 @@ a {
     }
     
 }
-
-.course-content {
-    width: 80%;
-    min-height: 100vh;
-    margin-left: 20%;
-    padding: 8em 2em;
-}
-
-
-@media (max-width: 1000px) {
-    .course-content  {
-        width: 100%;
-        margin-left: 0;
-        padding: 8em 1em;
-    }
-    
-}
