@@ -1,7 +1,7 @@
 <aside>
     <div class="sidebar-container">
         <div class="sidebar">
-            <h3>LEARN {{ course.title|upper }}</h3>
+            <h3><a href="{% url 'course' course.slug %}?unit={{ unit.slug }}">LEARN {{ course.title|upper }}</a></h3>
             
             {% for unit in units %}
                 <p><a href="{% url 'course' course.slug %}?unit={{ unit.slug }}">{{ unit.title }}</a></p>

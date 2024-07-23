@@ -29,6 +29,10 @@
                         </ul>
                     {% elif content.content_type == 'code' %}
                         <pre>{{ content.code_content }}</pre>
+                    {% elif content.content_type == 'video' %}
+                    <div class="video-container">
+                        <iframe width="560" height="315" src="{{ content.video_url }}" frameborder="0" allowfullscreen></iframe>
+                    </div>
                     {% endif %}
                 {% endfor %}
             </div>
@@ -41,7 +45,7 @@
                 <br>
             </div>
             
-            <div class="content-container">
+            <div class="content-container" style="background-color: #D9EEE1;">
                 <p>We recommend reading this tutorial, in the sequence listed in the menu.</p>
 
                 <p>If you have a large screen, the menu will always be present on the left.</p>
@@ -74,6 +78,10 @@
         border-radius: 5px;
     }
 
+    .content-container p {
+        padding: .5em 0;
+    }
+
     pre {
         background-color: #f4f4f4;
         padding: 10px;
@@ -86,16 +94,22 @@
         flex-wrap: wrap;
         justify-content: space-between;
         align-items: center;
+        gap: 1em;
         background-color: #FFC0C7;
         padding: 1em;
         border-radius: 5px;
     }
 
     .course-unit {
-        width: 20%;
-        background-color: #D9EEE1;
-        padding: .5em;
+        width: 32%;
+        background-color: #ffffff;
+        padding: 1em .5em;
         border-radius: 5px;
+        text-align: center;
+    }
+
+    .course-unit a {
+        color: black;
     }
 
     .course-unit:hover {
@@ -106,6 +120,17 @@
 
     .course-unit:hover a {
         color: white;
+    }
+
+    @media (max-width: 600px) {
+        .unit-content-container{
+        flex-direction: column;
+        gap: .5em;
+    }
+
+    .course-unit {
+        width: 100%;
+    }
     }
 </style>
 {% endblock content %}
