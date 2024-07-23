@@ -29,10 +29,19 @@
                         </ul>
                     {% elif content.content_type == 'code' %}
                         <pre>{{ content.code_content }}</pre>
-                    {% elif content.content_type == 'video' %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+        {% endfor %}
+
+        {% for lesson in lessons %}
+            <div class="content-container" style="background-color: {% cycle '#FFF4A3' '#FFC0C7' '#D9EEE1' %};">
+                {% for content in lesson_contents|dict_key:lesson.id %}
+                    {% if content.content_type == 'video' %}
                     <div class="video-container">
                         <iframe width="560" height="315" src="{{ content.video_url }}" frameborder="0" allowfullscreen></iframe>
                     </div>
+                    {% else %}
                     {% endif %}
                 {% endfor %}
             </div>
