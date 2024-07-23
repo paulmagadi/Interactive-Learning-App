@@ -34,8 +34,20 @@
             </div>
         {% endfor %}
     {% else %}
-            <h1>HTML Tutorial</h1>
-        <p>Please select a unit to view its lessons and content.</p>
+            <h1>{{course}} TUTORIAL</h1>
+            <div class="content-container" style="background-color: {% cycle '#FFF4A3' '#FFC0C7' '#D9EEE1' %};">
+                
+                {{course.description}}
+
+            </div>
+
+            <div class="content-container">
+                
+                {% for  in  %}
+                    
+                {% endfor %}
+                    
+            </div>
     {% endif %}
 </div>
 
