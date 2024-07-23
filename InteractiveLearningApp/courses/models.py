@@ -86,6 +86,7 @@ class Content(models.Model):
         ('paragraph', 'Paragraph'),
         ('list', 'List'),
         ('code', 'Code'),
+        ('video', 'Video'),
     ]
 
     lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE, related_name='contents')
@@ -93,6 +94,7 @@ class Content(models.Model):
     text_content = models.TextField(blank=True, null=True)
     list_items = models.TextField(blank=True, null=True) 
     code_content = models.TextField(blank=True, null=True)
+    video_url = models.URLField(blank=True, null=True)
     order = models.PositiveIntegerField()
 
     def __str__(self):
