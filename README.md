@@ -15,10 +15,17 @@ This application is carrently in its very innitial stages and therefore not much
 
 
 ![alt text](images/Screenshot%20(430).png)
+
 ![alt text](images/Screenshot%20(431).png)
+
 ![alt text](images/Screenshot%20(432).png)
+
 ![alt text](images/Screenshot%20(433).png)
+
 ![alt text](images/Screenshot%20(434).png)
+
 ![alt text](images/Screenshot%20(435).png)
+
 ![alt text](images/Screenshot%20(436).png)
+
 ![alt text](images/Screenshot%20(437).png)
