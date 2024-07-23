@@ -1,8 +1,6 @@
 from django.db import models
-from django.contrib.auth.models import User
 from users.models import CustomUser
 from django.utils.text import slugify
-from django.core.exceptions import ValidationError
 
 class Course(models.Model):
     title = models.CharField(max_length=200)
@@ -12,23 +10,23 @@ class Course(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     slug = models.SlugField(unique=True, blank=True, null=True)
     
-    
     def save(self, *args, **kwargs):
-        self.full_clean()
-    
         if not self.slug:
-            base_slug = slugify(self.title)
-            slug = base_slug
-            counter = 1
-            while Course.objects.filter(slug=slug).exists():
-                slug = f"{base_slug}-{counter}"
-                counter += 1
-            self.slug = slug
-            super().save(*args, **kwargs)
-       
+            self.slug = self.generate_unique_slug()
+        super().save(*args, **kwargs)
+    
+    def generate_unique_slug(self):
+        base_slug = slugify(self.title)
+        slug = base_slug
+        counter = 1
+        while Course.objects.filter(slug=slug).exists():
+            slug = f"{base_slug}-{counter}"
+            counter += 1
+        return slug
+    
     def __str__(self):
         return self.title
-    
+
 class Unit(models.Model):
     course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='units')
     title = models.CharField(max_length=200)
@@ -36,19 +34,19 @@ class Unit(models.Model):
     order = models.PositiveIntegerField()
     slug = models.SlugField(unique=True, blank=True, null=True)
     
-    
     def save(self, *args, **kwargs):
-        self.full_clean()
-    
         if not self.slug:
-            base_slug = slugify(self.title)
-            slug = base_slug
-            counter = 1
-            while Unit.objects.filter(slug=slug).exists():
-                slug = f"{base_slug}-{counter}"
-                counter += 1
-            self.slug = slug
-            super().save(*args, **kwargs)
+            self.slug = self.generate_unique_slug()
+        super().save(*args, **kwargs)
+    
+    def generate_unique_slug(self):
+        base_slug = slugify(self.title)
+        slug = base_slug
+        counter = 1
+        while Unit.objects.filter(slug=slug).exists():
+            slug = f"{base_slug}-{counter}"
+            counter += 1
+        return slug
 
     def __str__(self):
         return f"{self.course.title} - {self.title}"
@@ -59,42 +57,46 @@ class Unit(models.Model):
 class Lesson(models.Model):
     unit = models.ForeignKey(Unit, on_delete=models.CASCADE, related_name='lessons')
     title = models.CharField(max_length=200)
-    
-    CONTENT_TYPE_CHOICES = [
-        ('header', 'Header'),
-        ('paragraph', 'Paragraph'),
-        ('list', 'List'),
-    ]
-    
-    content_type = models.CharField(max_length=10, choices=CONTENT_TYPE_CHOICES)
-    text_content = models.TextField(blank=True, null=True)
-    list_items = models.TextField(blank=True, null=True) 
-    video_url = models.URLField(blank=True, null=True)
-    quiz_data = models.JSONField(blank=True, null=True)  
-    
     order = models.PositiveIntegerField()
     slug = models.SlugField(unique=True, blank=True, null=True)
     
-    
     def save(self, *args, **kwargs):
-        self.full_clean()
-    
         if not self.slug:
-            base_slug = slugify(self.title)
-            slug = base_slug
-            counter = 1
-            while Lesson.objects.filter(slug=slug).exists():
-                slug = f"{base_slug}-{counter}"
-                counter += 1
-            self.slug = slug
-            super().save(*args, **kwargs)
-
-    def __str__(self):
-        return f"{self.course.title} - {self.title}"
-
+            self.slug = self.generate_unique_slug()
+        super().save(*args, **kwargs)
+    
+    def generate_unique_slug(self):
+        base_slug = slugify(self.title)
+        slug = base_slug
+        counter = 1
+        while Lesson.objects.filter(slug=slug).exists():
+            slug = f"{base_slug}-{counter}"
+            counter += 1
+        return slug
+    
     def __str__(self):
         return f"{self.unit.title} - {self.title}"
 
     class Meta:
         ordering = ['order']
-        
+
+class Content(models.Model):
+    CONTENT_TYPE_CHOICES = [
+        ('header', 'Header'),
+        ('paragraph', 'Paragraph'),
+        ('list', 'List'),
+        ('code', 'Code'),
+    ]
+
+    lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE, related_name='contents')
+    content_type = models.CharField(max_length=10, choices=CONTENT_TYPE_CHOICES)
+    text_content = models.TextField(blank=True, null=True)
+    list_items = models.TextField(blank=True, null=True) 
+    code_content = models.TextField(blank=True, null=True)
+    order = models.PositiveIntegerField()
+
+    def __str__(self):
+        return f"{self.lesson.title} - {self.get_content_type_display()}"
+
+    class Meta:
+        ordering = ['order']

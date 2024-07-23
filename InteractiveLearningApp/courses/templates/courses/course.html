@@ -1,6 +1,6 @@
 {% extends 'main/base.html' %}
-
 {% load static %}
+{% load custom_filters %}
 
 {% block title %}
     {{ course.title }}
@@ -16,23 +16,25 @@
             <div class="content-container" style="background-color: {% cycle '#FFF4A3' '#FFC0C7' '#D9EEE1' %};">
                 <h3>{{ lesson.title }}</h3>
 
-                    {% if lesson.content_type == 'header' %}
-                        <h4>{{ lesson.text_content }}</h4>
-                    {% elif lesson.content_type == 'paragraph' %}
-                        <p>{{ lesson.text_content }}</p>
-                    {% elif lesson.content_type == 'list' %}
+                {% for content in lesson_contents|dict_key:lesson.id %}
+                    {% if content.content_type == 'header' %}
+                        <h4>{{ content.text_content }}</h4>
+                    {% elif content.content_type == 'paragraph' %}
+                        <p>{{ content.text_content }}</p>
+                    {% elif content.content_type == 'list' %}
                         <ul>
-                            {% for item in lesson.split_list_items %}
+                            {% for item in content.split_list_items %}
                                 <li>{{ item }}</li>
                             {% endfor %}
                         </ul>
-                    {% elif lesson.content_type == 'code' %}
-                        <pre>{{ lesson.code_content }}</pre>
+                    {% elif content.content_type == 'code' %}
+                        <pre>{{ content.code_content }}</pre>
                     {% endif %}
-            
+                {% endfor %}
             </div>
         {% endfor %}
     {% else %}
+            <h1>HTML Tutorial</h1>
         <p>Please select a unit to view its lessons and content.</p>
     {% endif %}
 </div>
