@@ -1,54 +1,40 @@
 {% extends 'main/base.html' %}
+
 {% load static %}
 
-
 {% block title %}
-    
+    {{ course.title }}
 {% endblock title %}
-    
-
 
 {% block content %}
 {% include 'courses/sidebar.html' %}
 <div class="course-content">
-    
-    
-    {% comment %}
-        {% if course %}
+    {% if selected_unit %}
+        <h2>{{ selected_unit.title }}</h2>
         
-        
-        <div>
-            {% for content in contents %}
-                {% if content.content_type == 'header' %}
-                    <h2>{{ content.text_content }}</h2>
-                {% elif content.content_type == 'paragraph' %}
-                    <p>{{ content.text_content }}</p>
-    
-                {% endif %}
-            {% endfor %}
-        </div>
-        {% endif %}
-    {% endcomment %}
-        
+        {% for lesson in lessons %}
+            <div class="content-container" style="background-color: {% cycle '#FFF4A3' '#FFC0C7' '#D9EEE1' %};">
+                <h3>{{ lesson.title }}</h3>
 
-    <h1>{{ course.lesson.title }}</h1>
-    {% for lesson in lessons %}
-        <div class="content-container" style="background-color: {% cycle '#FFF4A3' '#FFC0C7' '#D9EEE1' %};">
-            <h2>{{ lesson.title }}</h2>
-                {% for content in contents %}
-                    {% if content.content_type == 'header' %}
-                        <h4>{{ content.text_content }}</h4>
-                    {% elif content.content_type == 'paragraph' %}
-                        <p>{{ content.text_content }}</p>
-                    {%endif%}
-                {% endfor %}
-        </div>
-    {% endfor %}
-        
-   
-        
-
-        
+                    {% if lesson.content_type == 'header' %}
+                        <h4>{{ lesson.text_content }}</h4>
+                    {% elif lesson.content_type == 'paragraph' %}
+                        <p>{{ lesson.text_content }}</p>
+                    {% elif lesson.content_type == 'list' %}
+                        <ul>
+                            {% for item in lesson.split_list_items %}
+                                <li>{{ item }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% elif lesson.content_type == 'code' %}
+                        <pre>{{ lesson.code_content }}</pre>
+                    {% endif %}
+            
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>Please select a unit to view its lessons and content.</p>
+    {% endif %}
 </div>
 
 <style>
@@ -60,20 +46,10 @@
     }
 
     pre {
-            background-color: #f4f4f4;
-            padding: 10px;
-            border-radius: 5px;
-            overflow-x: auto;
-        }
+        background-color: #f4f4f4;
+        padding: 10px;
+        border-radius: 5px;
+        overflow-x: auto;
+    }
 </style>
 {% endblock content %}
-
-
-
-
-
-
-
-
-
-    
