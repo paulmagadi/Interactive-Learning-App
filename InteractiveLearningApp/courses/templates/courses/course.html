@@ -37,17 +37,32 @@
             <h1>{{course}} TUTORIAL</h1>
             <div class="content-container" style="background-color: {% cycle '#FFF4A3' '#FFC0C7' '#D9EEE1' %};">
                 
-                {{course.description}}
+                <p>{{course.description}}</p>
+                <br>
+            </div>
+            
+            <div class="content-container">
+                <p>We recommend reading this tutorial, in the sequence listed in the menu.</p>
+
+                <p>If you have a large screen, the menu will always be present on the left.</p>
+
+                <p>If you have a small screen, open the menu by clicking the top menu sign ☰.</p>
 
             </div>
 
-            <div class="content-container">
-                
-                {% for  in  %}
-                    
+            
+            {% if units %}
+            <div class="unit-content-container">
+
+                {% for unit in units %}
+                <div class="course-unit">
+                <h3><a href="{% url 'course' course.slug %}?unit={{ unit.slug }}">{{ unit.title }}</a></h3>
+                </div>
                 {% endfor %}
                     
             </div>
+            {% endif %}
+                
     {% endif %}
 </div>
 
@@ -64,6 +79,33 @@
         padding: 10px;
         border-radius: 5px;
         overflow-x: auto;
+    }
+
+    .unit-content-container{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #FFC0C7;
+        padding: 1em;
+        border-radius: 5px;
+    }
+
+    .course-unit {
+        width: 20%;
+        background-color: #D9EEE1;
+        padding: .5em;
+        border-radius: 5px;
+    }
+
+    .course-unit:hover {
+        background-color: #000000;
+        color: white;
+        
+    }
+
+    .course-unit:hover a {
+        color: white;
     }
 </style>
 {% endblock content %}
