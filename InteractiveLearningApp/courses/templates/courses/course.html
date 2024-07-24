@@ -14,11 +14,11 @@
         
         {% for lesson in lessons %}
             <div class="content-container" style="background-color: {% cycle '#FFF4A3' '#FFC0C7' '#D9EEE1' %};">
-                <h3>{{ lesson.title }}</h3>
+                <h3>{{ lesson.title }} </h3>
 
                 {% for content in lesson_contents|dict_key:lesson.id %}
                     {% if content.content_type == 'header' %}
-                        <h4>{{ content.text_content }}</h4>
+                        <h4>{{ content.text_content }} </h4>
                         <br>
                     {% elif content.content_type == 'paragraph' %}
                         <p>{{ content.text_content }}</p>
@@ -29,7 +29,6 @@
                                 <li>{{ item }}</li>
                             {% endfor %}
                         </ul>
-                        <br>
                     {% elif content.content_type == 'code' %}
                     <textarea class="code-editor">{{ content.code_content }}</textarea>
                     {% endif %}
