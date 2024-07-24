@@ -229,6 +229,7 @@ a {
     display: flex;
     justify-content: left;
     position: relative;
+    padding: 0 1em;
 }
 
 .scroll-header::-webkit-scrollbar { 
@@ -276,7 +277,7 @@ a {
 
 @media (max-width: 1000px) {
     .scroll-header {
-        padding-left:2em;
+        padding-left: 1em;
     }
 
     .scroll-header .left{
@@ -295,7 +296,6 @@ a {
 
 .sidebar-container {
     width: 20%;
-    
     position: fixed;
     top: 5rem;
     left: 0;
